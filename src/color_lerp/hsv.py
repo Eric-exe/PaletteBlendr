@@ -2,7 +2,8 @@
 
 import colorsys
 
-def interpolate_hsv(color_start, color_end, percentage):
+
+def interpolate_hsv_percentage(color_start, color_end, percentage):
     """Takes two HSV colors and a percentage, returns an RGB color."""
 
     hue_start = color_start[0]
@@ -33,7 +34,7 @@ def interpolate_hsv(color_start, color_end, percentage):
     return (red, green, blue)
 
 
-def interpolate_hsv_steps(color_start, color_end, steps):
+def interpolate_hsv(color_start, color_end, steps):
     """Takes two RGB colors and the number of steps, returns a list of RGB colors."""
 
     # convert to HSV, and normalize
@@ -48,7 +49,7 @@ def interpolate_hsv_steps(color_start, color_end, steps):
     # edge cases
     if steps == 1:
         # return the midpoint
-        return [interpolate_hsv(hsv_start, hsv_end, 0.5)]
+        return [interpolate_hsv_percentage(hsv_start, hsv_end, 0.5)]
     elif steps == 2:
         # return the start and end
         return [color_start, color_end]
@@ -59,7 +60,12 @@ def interpolate_hsv_steps(color_start, color_end, steps):
     current_percent = 0
 
     for _ in range(steps):
-        colors.append(interpolate_hsv(hsv_start, hsv_end, current_percent))
+        colors.append(interpolate_hsv_percentage(
+            hsv_start, hsv_end, current_percent))
         current_percent += percent_step
+
+    # rounding errors, replace first and last colors with originals
+    colors[0] = color_start
+    colors[-1] = color_end
 
     return colors

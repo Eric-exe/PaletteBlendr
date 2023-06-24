@@ -1,0 +1,31 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+.navbar-brand
+{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.pcr-app
+{
+  background-color: #15171a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+
+.pcr-color-palette
+{
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+
+.pcr-app .pcr-interaction .pcr-save
+{
+  background-color: #0275d8;
+}

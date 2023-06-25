@@ -1,22 +1,16 @@
-// initialize popover
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl)
-})
-// Background color change
+// draggable color elements
+$(document).ready(function () {
+  $("#original-palette-container").sortable();
+  $("#original-palette-container").disableSelection();
+});
 
-const body = document.querySelector('body');
-let rotation = 0;
+// clear original palette
+function clearOriginalPalette() {
+  for (let i = 0; i < colorPickrs.length; i++) {
+    colorPickrs[i].destroyAndRemove();
+  }
+  colorPickrs = [];
 
-function rotateBackground() {
-    rotation++;
-    rotation %= 360;
-
-    body.style.background = `linear-gradient(${rotation}deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%)`;
-    body.style.backgroundAttachment = 'fixed';
-    body.style.overscrollBehavior = 'none';
-
-    requestAnimationFrame(rotateBackground);
+  $("#original-palette-container").empty();
+  $("#original-palette-container-outer").addClass("d-none");
 }
-
-rotateBackground();

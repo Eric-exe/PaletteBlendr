@@ -1,31 +1,110 @@
 html,
 body {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+/*
+The following body and gradient animation is taken and modified from 
+https://codepen.io/P1N2O/pen/pyBNzX by Manuel Pinto
+*/
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 120s ease infinite;
+	height: 100vh;
+  background-attachment: fixed;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 
-.navbar-brand
-{
+
+.navbar-brand {
   font-weight: bold;
   display: flex;
   align-items: center;
 }
 
-.pcr-app
-{
+.pcr-app {
   background-color: #15171a;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 5px;
 }
 
-.pcr-color-palette
-{
+.pcr-color-palette {
   border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: 5px;
 }
 
-.pcr-app .pcr-interaction .pcr-save
-{
+.pcr-app .pcr-interaction .pcr-save {
   background-color: #0275d8;
+}
+
+.pickr
+{
+  height: 100%;
+}
+
+.pickr .pcr-button
+{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#original-palette-container-outer 
+{
+  background-color: #1c1f23;
+  border: 0px;
+}
+
+.color-card
+{
+  background-color: rgb(28, 28, 28);
+}
+
+.color-card-color
+{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.color-card-text
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-size: small;
+}
+
+.color-card-text:hover {
+  cursor: move;
+}
+
+.btn-close
+{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  visibility: hidden;
+}
+
+.color-card:hover .btn-close
+{
+  visibility: visible;
 }

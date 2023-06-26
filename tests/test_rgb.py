@@ -1,7 +1,7 @@
 """Tests RGB color interpolation."""
 
 import unittest as ut
-from src.color_lerp.rgb import interpolate_rgb
+from api.color_lerp.rgb import interpolate_rgb
 
 
 class TestRGB(ut.TestCase):

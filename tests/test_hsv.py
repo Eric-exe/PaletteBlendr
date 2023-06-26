@@ -1,7 +1,7 @@
 """Tests HSV color interpolation."""
 
 import unittest as ut
-from src.color_lerp.hsv import interpolate_hsv
+from api.color_lerp.hsv import interpolate_hsv
 
 
 class TestHSV(ut.TestCase):

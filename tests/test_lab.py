@@ -1,7 +1,7 @@
 """Tests color interpolation in the LAB color space."""
 
 import unittest as ut
-from src.color_lerp.lab import interpolate_lab
+from api.color_lerp.lab import interpolate_lab
 
 
 class TestLAB(ut.TestCase):

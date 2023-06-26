@@ -108,3 +108,20 @@ body {
 {
   visibility: visible;
 }
+
+#popup {
+  position: fixed;
+  top: 2%;
+  right: 1%;
+  background-color: rgb(255, 255, 255, 0.95);
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.25s ease-in-out;
+  color: black;
+}
+
+.hidden {
+  opacity: 0;
+}

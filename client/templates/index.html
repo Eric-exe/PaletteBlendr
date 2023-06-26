@@ -51,18 +51,20 @@
     </nav>
 
     <!-- main content -->
+
     <div class="container-fluid p-0 pb-1">
         <!-- Card that covers the screen -->
-        <div class="card m-2 border-secondary border-2" style="--bs-border-opacity: .75;">
-            <div class="card-body" style="min-height: 100vh;">
-                <div class="card">
+        <div class="card m-2 border-secondary border-2" style="--bs-border-opacity: .5;">
+            <div class="card-body">
+
+                <div class="card mb-1">
                     <div class="card-body p-2">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="card-title m-0">
                                 <h4 class="m-0"><u>Original Palette</u></h4>
                             </div>
                             <div>
-                                <button type="button" class="btn btn-primary px-4 color_picker">
+                                <button type="button" class="btn btn-primary px-4 me-1 color_picker">
                                     <div class="d-flex align-items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -74,24 +76,89 @@
                                 </button>
                                 <button type="button" class="btn btn-primary px-4" onclick="clearOriginalPalette()">
                                     <div class="d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                          </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        </svg>
                                         &nbsp;Clear all
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="card m-2 d-none" id="original-palette-container-outer">
+                    <div class="card m-2 mb-1 d-none" id="original-palette-container-outer">
                         <div class="card-body py-1">
                             <div class="row" id="original-palette-container"></div>
                         </div>
                     </div>
+
+                    <div class="d-flex justify-content-center d-none" id="original-palette-buttons">
+                        <button type="button" class="btn btn-primary m-1 mt-0" onclick="copyColors('hex')">Copy
+                            HEX</button>
+                        <button type="button" class="btn btn-primary m-1 mt-0" onclick="copyColors('rgb')">Copy
+                            RGB</button>
+                        <button type="button" class="btn btn-primary m-1 mt-0" onclick="copyColors('hsv')">Copy
+                            HSV</button>
+                    </div>
                 </div>
+
+
+                <div class="card mb-1">
+                    <div class="card-body p-2">
+                        <div class="row mx-4">
+                            <div class="col-6 d-flex justify-content-center">
+                                <b>Original Palette Size:&nbsp;</b><span id="original-palette-size">0</span>
+                            </div>
+                            <div class="col-6">
+                                <div class=" d-flex justify-content-center">
+                                    <b>New Palette Size:&nbsp;</b><span id="new-palette-size">8</span>
+                                </div>
+                                <input type="range" class="form-range" id="new-palette-size-range" value="8" max="50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr class="my-2 border-4">
+
             </div>
         </div>
     </div>
+
+    <!-- Popup -->
+    <div class="hidden" id="popup">Colors copied!</div>
+
+    <!-- Test POST request -->
+    <button id="test-button">Test API Route</button>
+    <div id="response"></div>
+
+    <script>
+        const testButton = document.getElementById("test-button");
+        const responseDiv = document.getElementById("response");
+
+        testButton.addEventListener("click", function () {
+            const data = {
+                colors: ["#FF0000", "#00FF00", "#0000FF"]
+            };
+
+            fetch("/api/color_lerp", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    responseDiv.textContent = JSON.stringify(data);
+                })
+                .catch(error => {
+                    responseDiv.textContent = "Error: " + error.message;
+                });
+        });
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

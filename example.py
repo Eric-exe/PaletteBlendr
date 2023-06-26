@@ -1,12 +1,12 @@
 """Displays RGB interpolation as a series of rectangles in matplotlib."""
 
 import matplotlib.pyplot as plt
-from src.color_lerp.rgb import interpolate_rgb
-from src.color_lerp.hsv import interpolate_hsv
-from src.color_lerp.lchab import interpolate_lchab
-from src.color_lerp.lchuv import interpolate_lchuv
-from src.color_lerp.lab import interpolate_lab
-from src.color_lerp.xyz import interpolate_xyz
+from api.color_lerp.rgb import interpolate_rgb
+from api.color_lerp.hsv import interpolate_hsv
+from api.color_lerp.lchab import interpolate_lchab
+from api.color_lerp.lchuv import interpolate_lchuv
+from api.color_lerp.lab import interpolate_lab
+from api.color_lerp.xyz import interpolate_xyz
 
 # Define the colors to interpolate between
 color_start = (255, 0, 0)

@@ -1,7 +1,7 @@
 """Tests LCHuv color interpolation."""
 
 import unittest as ut
-from src.color_lerp.lchuv import interpolate_lchuv
+from api.color_lerp.lchuv import interpolate_lchuv
 
 
 class TestLCHuv(ut.TestCase):

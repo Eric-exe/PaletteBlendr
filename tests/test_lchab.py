@@ -1,7 +1,7 @@
 """Test cases for LCHab interpolation."""
 
 import unittest as ut
-from src.color_lerp.lchab import interpolate_lchab
+from api.color_lerp.lchab import interpolate_lchab
 
 
 class TestLCHab(ut.TestCase):

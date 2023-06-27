@@ -58,47 +58,36 @@ $(document).ready(function () {
 
 		const hexColor = color.toHEXA().toString();
 		let rgbColor = color.toRGBA().toString(0);
-		let hsvColor = color.toHSVA().toString(0);
 
-		// remove alpha from rgb and hsv
+		// remove alpha from rgb
 		rgbColor = rgbColor.replace(", 1)", ")").replace("rgba", "rgb");
-		hsvColor = hsvColor.replace(", 1)", ")").replace("hsva", "hsv");
 
 		const cardElement = document.createElement("div");
 		cardElement.classList.add("col-2");
 		cardElement.classList.add("p-1");
 
 		const colorCard = document.createElement("div");
-		colorCard.classList.add("card");
-		colorCard.classList.add("border-2");
-		colorCard.classList.add("color-card");
+		colorCard.classList.add("card", "border-2", "color-card");
 
 		// x button
 		const colorCardClose = document.createElement("button");
 		colorCardClose.setAttribute("type", "button");
-		colorCardClose.classList.add("btn-close");
-		colorCardClose.classList.add("btn-close-white-filter");
-		colorCardClose.setAttribute("aria-label", "Close");
+		colorCardClose.classList.add("btn-close", "btn-close-white-filter");
 
 		let colorCardColorPickr = document.createElement("div");
 		const colorCardColor = document.createElement("div");
 		colorCardColor.append(colorCardColorPickr);
 
 		const colorCardBody = document.createElement("div");
-		colorCardBody.classList.add("card-body");
-		colorCardBody.classList.add("px-2");
-		colorCardBody.classList.add("py-1");
+		colorCardBody.classList.add("card-body", "px-2", "py-1");
 
 		const colorCardText = document.createElement("div");
-		colorCardText.classList.add("card-text");
-		colorCardText.classList.add("color-card-text");
+		colorCardText.classList.add("card-text", "color-card-text-draggable");
 		colorCardText.innerHTML =
 			"<b>HEX:</b> " +
 			hexColor +
 			"<br><b>RGB:</b> " +
-			rgbColor +
-			"<br><b>HSV:</b> " +
-			hsvColor;
+			rgbColor;
 
 		colorCardBody.appendChild(colorCardText);
 		colorCard.appendChild(colorCardColor);
@@ -151,19 +140,15 @@ $(document).ready(function () {
 
 			const hexColor = color.toHEXA().toString();
 			let rgbColor = color.toRGBA().toString(0);
-			let hsvColor = color.toHSVA().toString(0);
 
-			// remove alpha from rgb and hsv
+			// remove alpha from rgb
 			rgbColor = rgbColor.replace(", 1)", ")").replace("rgba", "rgb");
-			hsvColor = hsvColor.replace(", 1)", ")").replace("hsva", "hsv");
 
 			colorCardText.innerHTML =
 				"<b>HEX:</b> " +
 				hexColor +
 				"<br><b>RGB:</b> " +
-				rgbColor +
-				"<br><b>HSV:</b> " +
-				hsvColor;
+				rgbColor;
 		});
 
 		// add listener to the x button

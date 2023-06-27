@@ -75,9 +75,12 @@ def interpolate_lchab(color_start, color_end, steps):
         current_percent += percent_step
 
     # rounding errors, replace first and last colors with originals
-    colors[0] = (color_start.rgb_r * 255, color_start.rgb_g *
-                 255, color_start.rgb_b * 255)
-    colors[-1] = (color_end.rgb_r * 255, color_end.rgb_g *
-                  255, color_end.rgb_b * 255)
+    colors[0] = (int(color_start.rgb_r * 255),
+                 int(color_start.rgb_g * 255),
+                 int(color_start.rgb_b * 255))
+
+    colors[-1] = (int(color_end.rgb_r * 255),
+                  int(color_end.rgb_g * 255),
+                  int(color_end.rgb_b * 255))
 
     return colors

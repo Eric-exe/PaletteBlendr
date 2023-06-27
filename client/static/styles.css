@@ -31,8 +31,6 @@ body {
 	}
 }
 
-
-
 .navbar-brand {
   font-weight: bold;
   display: flex;
@@ -66,7 +64,7 @@ body {
   height: 100%;
 }
 
-#original-palette-container-outer 
+.palette-container-outer 
 {
   background-color: #1c1f23;
   border: 0px;
@@ -83,7 +81,7 @@ body {
   border-bottom-right-radius: 0px;
 }
 
-.color-card-text
+.color-card-text, .color-card-text-draggable
 {
   white-space: nowrap;
   overflow: hidden;
@@ -92,7 +90,7 @@ body {
   font-size: small;
 }
 
-.color-card-text:hover {
+.color-card-text-draggable:hover {
   cursor: move;
 }
 

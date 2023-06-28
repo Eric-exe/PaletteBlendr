@@ -190,7 +190,7 @@ function createColorCard(color) {
 	rgbColor =
 		"rgb(" + rgbColor[0] + ", " + rgbColor[1] + ", " + rgbColor[2] + ")";
 	colorCardText.innerHTML = colorCardText.innerHTML =
-		"<b>HEX:</b> " + color + "<br><b>RGB:</b> " + rgbColor;
+		"<b>HEX:</b> " + color.toUpperCase() + "<br><b>RGB:</b> " + rgbColor;
 
 	colorCardBody.appendChild(colorCardText);
 	colorCard.appendChild(colorCardColor);

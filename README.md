@@ -80,6 +80,6 @@ Start the server
 
 **Frontend:** [Bootstrap](https://getbootstrap.com/), [JQuery](https://jquery.com/)
 
-**Color Picker:** [Chart.js](https://github.com/simonwep/pickr)
+**Color Picker:** [Pickr](https://github.com/simonwep/pickr)
 
 **Backend:** [Flask](https://flask.palletsprojects.com/)

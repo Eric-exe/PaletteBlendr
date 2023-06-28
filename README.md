@@ -24,9 +24,9 @@ python -m example
 
 ## API
 Interpolate your own colors
-`
+```bash
 POST /api/color_lerp
-`
+```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `colors` | `array` | **Required**. The colors to interpolate between. It has to be in HEX. |

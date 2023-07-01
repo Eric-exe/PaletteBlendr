@@ -1,4 +1,4 @@
-# [PaletteBlendr](https://paletteblender.vercel.app)
+# [PaletteBlendr](https://paletteblendr.vercel.app)
 ![License](https://img.shields.io/github/license/EricLin-jpg/PaletteBlendr)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fpaletteblendr.vercel.app%2F)
 
